@@ -1,68 +1,49 @@
 package re.netology.Service;
+
 public class Radio {
-    public int currentStation;
+    private int currentStation;
+    public int currentVolume;
+
     public int getCurrentStation() {
         return currentStation;
     }
-    public void setCurrentStation(int newCurrentStation) {
-        currentStation = newCurrentStation;
-    }
-
-    public int currentVolume;
     public int getCurrentVolume() {
         return currentVolume;
     }
-    public void setCurrentVolume(int newCurrentVolume) {
-        currentVolume = newCurrentVolume;
-    }
 
-    public int setStation() { // Ручной ввод станции, где минимум 0, а максимум 9
-        if (currentStation > 9) {
-            currentStation = 9;
-        } else if (currentStation < 0) {
-            currentStation = 0;
+    public void setCurrentStation(int newCurrentStation) { // выбор станции
+        if (newCurrentStation > 9) {
+            return;
         }
-        return currentStation;
-    }
+        if (newCurrentStation < 0) {
+            return;
+            }
+            this.currentStation = newCurrentStation;
+        }
 
-
-    public void nextStation(){  // Следующая станция
-        if ( currentStation > 9) {
+    public void nextStation() { // переключение на следующую станцию
+        if (currentStation == 9) {
             currentStation = 0;
         } else {
             currentStation++;
         }
     }
-    public void prevStation(){ // Предыдущая станция
-        if ( currentStation < 0) {
+
+    public void prevStation() { // переключение на предыдущую станцию
+        if (currentStation == 0) {
             currentStation = 9;
         } else {
             currentStation--;
         }
     }
-
-
     public void increaseVolume() { // Увеличение громкости
-        if (currentVolume > 100) {
-            currentVolume = 100;
-        } else {
-            currentVolume ++;
+        if (currentVolume < 100) {
+            currentVolume++;
         }
     }
-
     public void downgradeVolume() { // Уменьшение громкости
-        if (currentVolume < 0) {
-            currentVolume = 0;
-        } else {
-            currentVolume --;
+        if (currentVolume > 0) {
+            currentVolume--;
         }
-    }
-    public int minMaxVolume () { // Установка громкости, где минимальная 0, максимальная 100
-        if (currentVolume > 100) {
-        currentVolume = 100;
-    } else if (currentVolume < 0) {
-            currentVolume = 0;
-        }
-        return currentVolume;
     }
 }

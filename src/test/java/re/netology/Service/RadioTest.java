@@ -1,40 +1,14 @@
 package re.netology.Service;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 public class RadioTest {
-
-
     @Test
-    public void shouldSetOverMaxStation() { //Выбор станции выше максимальной
-        Radio rad = new Radio();
-
-        rad.setCurrentStation(11);
-        rad.setStation();
-
-        int expected = 9;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldSetUnderMinStation() { //Выбор станции ниже минимальной
-        Radio rad = new Radio();
-
-        rad.setCurrentStation(-3);
-        rad.setStation();
-
-        int expected = 0;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-    @Test
-    public void shouldSetAnotherStation() { //Выбор станции от 0 до 9
+    public void shouldSetStation() { //Выбор станции от 0 до 9
         Radio rad = new Radio();
 
         rad.setCurrentStation(5);
-        rad.setStation();
 
         int expected = 5;
         int actual = rad.getCurrentStation();
@@ -44,20 +18,32 @@ public class RadioTest {
 
 
     @Test
-    public void shouldNextOverStation(){ // Переключение станции выше 9
+    public void shouldOverStation() { // Переключение станции выше 9
         Radio rad = new Radio();
 
-        rad.setCurrentStation(10);
-        rad.nextStation();
+        rad.setCurrentStation(11);
 
+        int actual = rad.getCurrentStation();
         int expected = 0;
+
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldUnderStation() { // Переключение станции ниже 0
+        Radio rad = new Radio();
+
+        rad.setCurrentStation(4);
+        rad.setCurrentStation(-1);
+
+        int expected = 4;
         int actual = rad.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldNextStation(){ // Переключение станции до 9
+    public void shouldNextStation() { // Следующая станция
         Radio rad = new Radio();
 
         rad.setCurrentStation(7);
@@ -68,22 +54,21 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
-
     @Test
-    public void shouldPrevUnderStation(){ // Переключение станции ниже 0
+    public void shouldNextStationAfter() { // Следующая станция после 9
         Radio rad = new Radio();
 
-        rad.setCurrentStation(-1);
-        rad.prevStation();
+        rad.setCurrentStation(9);
+        rad.nextStation();
 
-        int expected = 9;
+        int expected = 0;
         int actual = rad.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldPrevStation(){ // переключение станции ниже 9
+    public void shouldPrevUnderStation() { // Предыдущая станция
         Radio rad = new Radio();
 
         rad.setCurrentStation(5);
@@ -95,27 +80,38 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    
+    @Test
+    public void shouldPrevStation() { // Предыдущая станция ниже 0
+        Radio rad = new Radio();
+
+        rad.setCurrentStation(0);
+        rad.prevStation();
+
+        int expected = 9;
+        int actual = rad.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
     @Test
     public void shouldIncVolume() { // Увеличение громкости
         Radio vol = new Radio();
 
-        vol.setCurrentVolume(24);
         vol.increaseVolume();
 
-        int expected = 25;
+        int expected = 1;
         int actual = vol.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
 
     }
-
     @Test
-    public void shouldOverIncVolume() { // Увеличение громкости выше максимума
+    public void shouldOverIncVolume() { // Увеличение громкости
         Radio vol = new Radio();
 
-        vol.setCurrentVolume(101);
-        vol.increaseVolume();
+        for (int i = 0; i < 105; i++) {
+            vol.increaseVolume();
+        }
 
         int expected = 100;
         int actual = vol.getCurrentVolume();
@@ -123,65 +119,30 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
 
     }
-
     @Test
     public void shouldDownVolume() { // Уменьшение громкости
         Radio vol = new Radio();
 
-        vol.setCurrentVolume(55);
         vol.downgradeVolume();
-
-        int expected = 54;
-        int actual = vol.getCurrentVolume();
-
-        Assertions.assertEquals(expected, actual);
-    }
-        @Test
-        public void shouldUnderDownVolume() { // Уменьшение громкости
-            Radio vol = new Radio();
-
-            vol.setCurrentVolume(-2);
-            vol.downgradeVolume();
-
-            int expected = 0;
-            int actual = vol.getCurrentVolume();
-
-            Assertions.assertEquals(expected, actual);
-
-    }
-    @Test
-    public void shouldSetOverMaxVolume() { // Установка громкости выше максимальной
-        Radio vol = new Radio();
-
-        vol.setCurrentVolume(101);
-        vol.minMaxVolume();
-
-        int expected = 100;
-        int actual = vol.getCurrentVolume();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldSetUnderMinVolume() { // Установка громкости ниже минимума
-        Radio vol = new Radio();
-
-        vol.setCurrentVolume(-2);
-        vol.minMaxVolume();
 
         int expected = 0;
         int actual = vol.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
+
     }
     @Test
-    public void shouldSetAnotherVolume() { // Устанвка громкости от 0 до 9
+    public void shouldUnderMinVolume() { // Уменьшение громкости
         Radio vol = new Radio();
 
-        vol.setCurrentVolume(30);
-        vol.minMaxVolume();
+        for (int i = 0; i < 30; i++) {
+            vol.increaseVolume();
+        }
+        for (int i = 0; i < 4; i++) {
+            vol.downgradeVolume();
+        }
 
-        int expected = 30;
+        int expected = 26;
         int actual = vol.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
