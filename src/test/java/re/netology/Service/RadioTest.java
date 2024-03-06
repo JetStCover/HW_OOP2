@@ -32,7 +32,7 @@ public class RadioTest {
 
     @Test
     public void shouldUnderStation() { // Переключение станции ниже 0
-        Radio rad = new Radio();
+        Radio rad = new Radio(10);
 
         rad.setCurrentStation(4);
         rad.setCurrentStation(-1);
@@ -45,7 +45,7 @@ public class RadioTest {
 
     @Test
     public void shouldNextStation() { // Следующая станция
-        Radio rad = new Radio();
+        Radio rad = new Radio(10);
 
         rad.setCurrentStation(7);
         rad.nextStation();
@@ -58,7 +58,7 @@ public class RadioTest {
 
     @Test
     public void shouldNextStationAfter() { // Следующая станция после 9
-        Radio rad = new Radio();
+        Radio rad = new Radio(10);
 
         rad.setCurrentStation(9);
         rad.nextStation();
@@ -71,7 +71,7 @@ public class RadioTest {
 
     @Test
     public void shouldPrevUnderStation() { // Предыдущая станция
-        Radio rad = new Radio();
+        Radio rad = new Radio(10);
 
         rad.setCurrentStation(5);
         rad.prevStation();
@@ -84,7 +84,7 @@ public class RadioTest {
 
     @Test
     public void shouldPrevStation() { // Предыдущая станция ниже 0
-        Radio rad = new Radio();
+        Radio rad = new Radio(10);
 
         rad.setCurrentStation(0);
         rad.prevStation();
