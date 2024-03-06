@@ -2,11 +2,12 @@ package re.netology.Service;
 
 public class Radio {
     private int currentStation;
-    public int currentVolume;
+    private int currentVolume;
 
     public int getCurrentStation() {
         return currentStation;
     }
+
     public int getCurrentVolume() {
         return currentVolume;
     }
@@ -17,9 +18,9 @@ public class Radio {
         }
         if (newCurrentStation < 0) {
             return;
-            }
-            this.currentStation = newCurrentStation;
         }
+        this.currentStation = newCurrentStation;
+    }
 
     public void nextStation() { // переключение на следующую станцию
         if (currentStation == 9) {
@@ -36,11 +37,13 @@ public class Radio {
             currentStation--;
         }
     }
+
     public void increaseVolume() { // Увеличение громкости
         if (currentVolume < 100) {
             currentVolume++;
         }
     }
+
     public void downgradeVolume() { // Уменьшение громкости
         if (currentVolume > 0) {
             currentVolume--;

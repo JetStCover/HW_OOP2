@@ -29,6 +29,7 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldUnderStation() { // Переключение станции ниже 0
         Radio rad = new Radio();
@@ -54,6 +55,7 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldNextStationAfter() { // Следующая станция после 9
         Radio rad = new Radio();
@@ -105,6 +107,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
 
     }
+
     @Test
     public void shouldOverIncVolume() { // Увеличение громкости
         Radio vol = new Radio();
@@ -119,6 +122,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
 
     }
+
     @Test
     public void shouldDownVolume() { // Уменьшение громкости
         Radio vol = new Radio();
@@ -131,6 +135,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
 
     }
+
     @Test
     public void shouldUnderMinVolume() { // Уменьшение громкости
         Radio vol = new Radio();
