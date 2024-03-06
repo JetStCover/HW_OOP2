@@ -3,11 +3,12 @@ package re.netology.Service;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class RadioTest {
-    @Test
-    public void shouldSetStation() { //Выбор станции от 0 до 9
-        Radio rad = new Radio();
+import static org.junit.jupiter.api.Assertions.*;
 
+class RadioTest {
+    @Test
+    public void shouldRadioTest() {
+        Radio rad = new Radio();
         rad.setCurrentStation(5);
 
         int expected = 5;
@@ -15,7 +16,6 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
-
 
     @Test
     public void shouldOverStation() { // Переключение станции выше 9
@@ -42,7 +42,6 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
-
     @Test
     public void shouldNextStation() { // Следующая станция
         Radio rad = new Radio();

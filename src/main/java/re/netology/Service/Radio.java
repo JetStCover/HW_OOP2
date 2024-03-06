@@ -1,16 +1,16 @@
 package re.netology.Service;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+
 public class Radio {
+    @Getter
     private int currentStation;
+    @Getter
     private int currentVolume;
-
-    public int getCurrentStation() {
-        return currentStation;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
+    private int allStation = 10;
 
     public void setCurrentStation(int newCurrentStation) { // выбор станции
         if (newCurrentStation > 9) {
