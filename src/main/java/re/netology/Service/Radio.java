@@ -3,6 +3,15 @@ package re.netology.Service;
 public class Radio {
     private int currentStation;
     private int currentVolume;
+    private int allStation;
+
+    public Radio(int allStation) {
+        this.allStation = allStation;
+    }
+
+    public Radio() {
+        this.allStation = 10;
+    }
 
     public int getCurrentStation() {
         return currentStation;
@@ -13,7 +22,7 @@ public class Radio {
     }
 
     public void setCurrentStation(int newCurrentStation) { // выбор станции
-        if (newCurrentStation > 9) {
+        if (newCurrentStation > allStation) {
             return;
         }
         if (newCurrentStation < 0) {
@@ -23,7 +32,7 @@ public class Radio {
     }
 
     public void nextStation() { // переключение на следующую станцию
-        if (currentStation == 9) {
+        if (currentStation == allStation - 1) {
             currentStation = 0;
         } else {
             currentStation++;
@@ -32,7 +41,7 @@ public class Radio {
 
     public void prevStation() { // переключение на предыдущую станцию
         if (currentStation == 0) {
-            currentStation = 9;
+            currentStation = allStation - 1;
         } else {
             currentStation--;
         }
